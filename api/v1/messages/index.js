@@ -6,7 +6,7 @@ const { Readable } = require('node:stream')
  *
  * Vercel route: POST /api/v1/messages
  */
-module.exports = async function handler(req, res) {
+async function handler(req, res) {
   if (req.method === 'OPTIONS') {
     res.statusCode = 204
     res.setHeader('Access-Control-Allow-Origin', '*')
@@ -86,4 +86,8 @@ module.exports = async function handler(req, res) {
     }
   }
 }
+
+module.exports = handler
+// Keep the function alive long enough for Claude streaming.
+module.exports.config = { maxDuration: 60 }
 
