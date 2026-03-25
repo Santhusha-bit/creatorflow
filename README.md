@@ -63,7 +63,7 @@ npm run build
 npm run preview
 ```
 
-## ⚠️ API Key Security
+## API Key Security
 
 This app calls the Anthropic API directly from the browser (using the `anthropic-dangerous-direct-browser-calls` header). This is fine for local development and personal use, but **do not deploy this publicly** with your API key exposed in the frontend.
 
@@ -74,7 +74,7 @@ For a production deployment, add a backend proxy:
 
 ## Pipelines
 
-### 🎭 Personal Brand (7 steps)
+### Personal Brand (7 steps)
 1. Brand Identity Builder
 2. Profile & Bio Optimizer
 3. Content Strategy Planner
@@ -83,7 +83,7 @@ For a production deployment, add a backend proxy:
 6. Community & Engagement Engine
 7. Monetization Roadmap
 
-### 🛍️ Sell a Product (7 steps)
+### Sell a Product (7 steps)
 1. Product Idea Generator
 2. Product Outline Builder
 3. Seller Profile Optimizer
