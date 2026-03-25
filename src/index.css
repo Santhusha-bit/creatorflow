@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0D0D0D;
+  --ink2: #2E2E2E;
+  --ink3: #5C5C5C;
+  --ink4: #9A9A9A;
+  --border: #E5E5E5;
+  --bg: #F8F6F2;
+  --bg2: #F0ECE6;
+  --bg3: #E8E3DB;
+  --white: #FFFFFF;
+  --ig: #E1306C;
+  --ig-bg: #FFF0F6;
+  --ig-bd: #F9C8DC;
+  --yt: #FF0000;
+  --yt-bg: #FFF2F2;
+  --yt-bd: #FFB8B8;
+  --brand-accent: #FF5C35;
+  --brand-gold: #F0A500;
+  --green: #16A34A;
+
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --sh-xs: 0 1px 2px rgba(0,0,0,.05);
+  --sh-sm: 0 1px 4px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.04);
+  --sh-md: 0 4px 16px rgba(0,0,0,.09), 0 1px 3px rgba(0,0,0,.05);
+  --sh-lg: 0 16px 48px rgba(0,0,0,.13), 0 4px 8px rgba(0,0,0,.06);
+  --sh-xl: 0 32px 80px rgba(0,0,0,.18), 0 8px 16px rgba(0,0,0,.08);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: #FFE3D4; color: var(--ink); }
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+
+input, button, textarea, select { font-family: var(--sans); }
+input::placeholder { color: var(--ink4) !important; }
+
+/* ── Animations ── */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(20px) } to { opacity:1; transform:translateY(0) } }
+@keyframes fadeIn   { from { opacity:0 } to { opacity:1 } }
+@keyframes slideIn  { from { opacity:0; transform:translateX(-10px) } to { opacity:1; transform:translateX(0) } }
+@keyframes shimmer  { from { transform:translateX(-100%) } to { transform:translateX(250%) } }
+@keyframes blink    { 0%,100% { opacity:1 } 50% { opacity:0 } }
+@keyframes bounce3  { 0%,80%,100% { transform:translateY(0); opacity:.5 } 40% { transform:translateY(-5px); opacity:1 } }
+@keyframes marquee  { from { transform:translateX(0) } to { transform:translateX(-50%) } }
+@keyframes floatA   { 0%,100% { transform:translateY(0) rotate(-1.5deg) } 50% { transform:translateY(-12px) rotate(2deg) } }
+@keyframes floatB   { 0%,100% { transform:translateY(0) rotate(2deg) } 50% { transform:translateY(-16px) rotate(-1deg) } }
+@keyframes floatC   { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-8px) } }
+
+.au { animation: fadeUp .55s cubic-bezier(.22,1,.36,1) both; }
+.ai { animation: fadeIn .4s ease both; }
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--ink); color: white; border: none; border-radius: 12px;
+  font-size: 14.5px; font-weight: 700; cursor: pointer;
+  transition: all .2s cubic-bezier(.22,1,.36,1);
+  letter-spacing: -.02em; font-family: var(--sans);
+  text-decoration: none; white-space: nowrap;
+}
+.btn-primary:hover { background: #1a1a1a; transform: translateY(-2px); box-shadow: var(--sh-md); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--white); color: var(--ink); border: 1.5px solid var(--border);
+  border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: all .18s; letter-spacing: -.01em; font-family: var(--sans);
+  text-decoration: none;
+}
+.btn-secondary:hover { border-color: var(--ink3); background: var(--bg); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: none; border: none; color: var(--ink3); font-size: 13px;
+  font-weight: 600; cursor: pointer; transition: color .15s;
+  font-family: var(--sans); padding: 5px 8px; border-radius: 8px;
+}
+.btn-ghost:hover { color: var(--ink); background: var(--bg2); }
+
+/* ── Cards ── */
+.card {
+  background: var(--white); border-radius: 20px;
+  border: 1px solid var(--border); box-shadow: var(--sh-sm);
+}
+
+/* ── Form fields ── */
+.field-group label {
+  display: block; font-size: 11.5px; font-weight: 700; color: var(--ink2);
+  letter-spacing: .01em; margin-bottom: 7px;
+}
+.field-group input {
+  width: 100%; padding: 11px 14px; border-radius: 10px;
+  border: 1.5px solid var(--border); font-size: 14px; color: var(--ink);
+  background: var(--white); outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.field-group input:focus {
+  border-color: var(--ink2);
+  box-shadow: 0 0 0 3px rgba(13,13,13,.06);
+}
+.field-group input.has-val { border-color: #BFBFBF; }
+
+/* ── Sidebar nav ── */
+.side-btn {
+  display: flex; align-items: center; gap: 10px; padding: 9px 10px;
+  border-radius: 10px; border: none; background: transparent; cursor: pointer;
+  width: 100%; text-align: left; transition: all .15s; color: var(--ink4);
+  font-family: var(--sans);
+}
+.side-btn:hover:not(.act) { background: var(--bg); color: var(--ink2); }
+.side-btn.act {
+  background: var(--white); color: var(--ink);
+  box-shadow: var(--sh-sm), 0 0 0 1px rgba(0,0,0,.04);
+}
+.side-btn.done { color: var(--ink2); }
+
+/* ── Platform toggle ── */
+.plat-btn {
+  display: flex; align-items: center; gap: 8px; padding: 10px 18px;
+  border-radius: 10px; border: 2px solid var(--border);
+  background: var(--white); cursor: pointer; font-size: 13.5px;
+  font-weight: 700; font-family: var(--sans); transition: all .2s;
+  position: relative; user-select: none;
+}
+.plat-btn:hover { border-color: #C0C0C0; }
+.plat-btn.ig.on {
+  border-color: var(--ig); background: var(--ig-bg); color: var(--ig);
+  box-shadow: 0 0 0 3px rgba(225,48,108,.1); transform: translateY(-1px);
+}
+.plat-btn.yt.on {
+  border-color: var(--yt); background: var(--yt-bg); color: var(--yt);
+  box-shadow: 0 0 0 3px rgba(255,0,0,.1); transform: translateY(-1px);
+}
+
+/* ── Generate button ── */
+.gen-btn {
+  width: 100%; padding: 15px 24px; border-radius: 12px; border: none;
+  font-size: 15px; font-weight: 800; cursor: pointer; transition: all .2s;
+  letter-spacing: -.02em; font-family: var(--sans);
+  position: relative; overflow: hidden;
+}
+.gen-btn.rdy { background: var(--ink); color: white; }
+.gen-btn.rdy:hover {
+  background: #1a1a1a; transform: translateY(-1.5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.22);
+}
+.gen-btn.rdy:active { transform: translateY(0); }
+.gen-btn.ld { background: var(--ink); color: white; cursor: not-allowed; }
+.gen-btn.ld::after {
+  content: ''; position: absolute; top: 0; left: 0; width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.13), transparent);
+  animation: shimmer 1.3s ease infinite;
+}
+.gen-btn.dis { background: var(--bg2); color: var(--ink4); cursor: not-allowed; }
+
+/* ── Output cards ── */
+.out-card {
+  flex: 1; min-width: 0; border: 1.5px solid var(--border); border-radius: 16px;
+  overflow: hidden; background: var(--white);
+  transition: border-color .25s, box-shadow .25s;
+  display: flex; flex-direction: column;
+}
+.out-card.s-ig { border-color: var(--ig); box-shadow: 0 0 0 4px rgba(225,48,108,.08); }
+.out-card.s-yt { border-color: var(--yt); box-shadow: 0 0 0 4px rgba(255,0,0,.08); }
+
+/* ── Mode selector ── */
+.mode-card {
+  flex: 1; padding: 28px 24px; border-radius: 18px; border: 2px solid var(--border);
+  background: var(--white); cursor: pointer; text-align: left; transition: all .22s;
+  font-family: var(--sans); position: relative; overflow: hidden;
+}
+.mode-card:hover { transform: translateY(-3px); box-shadow: var(--sh-md); border-color: #C8C8C8; }
+.mode-card.sel-brand {
+  border-color: #7C3AED;
+  box-shadow: 0 0 0 4px rgba(124,58,237,.1), var(--sh-md);
+  transform: translateY(-2px);
+}
+.mode-card.sel-product {
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 4px rgba(255,92,53,.1), var(--sh-md);
+  transform: translateY(-2px);
+}
+
+/* ── Feature & testimonial cards ── */
+.feat-card {
+  background: var(--white); border-radius: 20px; border: 1px solid var(--border);
+  padding: 28px; transition: all .22s;
+}
+.feat-card:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); }
+
+/* ── Marquee ── */
+.mq-track {
+  display: flex; gap: 14px;
+  animation: marquee 32s linear infinite;
+  width: max-content;
+}
+
+/* ── Misc ── */
+.divider { height: 1px; background: var(--border); }
+.prog-pip {
+  height: 5px; border-radius: 3px; border: none;
+  cursor: pointer; transition: all .3s cubic-bezier(.4,0,.2,1); padding: 0;
+}
