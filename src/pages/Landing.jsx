@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { BoltIcon, ArrRight, StarIcon, PersonIcon, ShopIcon, IgIcon, YtIcon, BRAND_STEPS, PRODUCT_STEPS } from '../App'
 
-export default function Landing({ onStart }) {
+export default function Landing({ onStart, onNavigate }) {
   const features = [
     { ic: '🎭', t: 'Two Complete Pipelines',  d: 'Personal brand building and digital product selling — two distinct 7-step pipelines, each with tailored prompts for your exact goal.' },
     { ic: '⚡', t: 'Parallel Generation',      d: 'Generate for Instagram and YouTube at the same time. One prompt. Two platform-native outputs. Zero extra effort.' },
@@ -282,7 +282,27 @@ export default function Landing({ onStart }) {
         </div>
         <span style={{ fontSize:12.5, color:'var(--ink4)' }}>© 2025 Creatorflow · For creators who mean it</span>
         <div style={{ display:'flex', gap:20 }}>
-          {['Privacy','Terms','Contact'].map(l => <span key={l} style={{ fontSize:12.5, color:'var(--ink4)', cursor:'pointer' }}>{l}</span>)}
+          <button
+            type="button"
+            onClick={() => onNavigate?.('privacy')}
+            style={{ background:'none', border:'none', cursor:'pointer', fontSize:12.5, color:'var(--ink4)', fontWeight:600, padding:0 }}
+          >
+            Privacy
+          </button>
+          <button
+            type="button"
+            onClick={() => onNavigate?.('terms')}
+            style={{ background:'none', border:'none', cursor:'pointer', fontSize:12.5, color:'var(--ink4)', fontWeight:600, padding:0 }}
+          >
+            Terms
+          </button>
+          <button
+            type="button"
+            onClick={() => onNavigate?.('contact')}
+            style={{ background:'none', border:'none', cursor:'pointer', fontSize:12.5, color:'var(--ink4)', fontWeight:600, padding:0 }}
+          >
+            Contact
+          </button>
         </div>
       </footer>
     </div>

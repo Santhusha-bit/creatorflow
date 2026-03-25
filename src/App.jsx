@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import './index.css'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -338,21 +338,55 @@ export async function streamGenerate({ prompt, onChunk, signal }) {
 import Landing from './pages/Landing'
 import ModeSelector from './pages/ModeSelector'
 import Pipeline from './pages/Pipeline'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
+import Contact from './pages/Contact'
 
 export default function App() {
-  const [page, setPage] = useState('landing') // 'landing' | 'mode' | 'app'
+  const hashToLegalPage = (hash) => {
+    const h = (hash || '').replace('#', '').toLowerCase()
+    if (h === 'privacy') return 'privacy'
+    if (h === 'terms') return 'terms'
+    if (h === 'contact') return 'contact'
+    return null
+  }
+
+  const [page, setPage] = useState(() => {
+    return hashToLegalPage(window.location.hash) || 'landing'
+  }) // 'landing' | 'mode' | 'app' | 'privacy' | 'terms' | 'contact'
   const [mode, setMode] = useState(null)      // 'brand' | 'product'
 
-  const handleStart  = () => setPage('mode')
-  const handleSelect = (m) => { setMode(m); setPage('app') }
-  const handleBack   = () => setPage('mode')
-  const handleSwitch = () => setPage('mode')
+  useEffect(() => {
+    const onHashChange = () => {
+      const legal = hashToLegalPage(window.location.hash)
+      if (legal) setPage(legal)
+    }
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
+
+  const clearLegalHash = () => {
+    if (window.location.hash) window.location.hash = ''
+  }
+
+  const handleStart  = () => { clearLegalHash(); setPage('mode') }
+  const handleSelect = (m) => { clearLegalHash(); setMode(m); setPage('app') }
+  const handleBack   = () => { clearLegalHash(); setPage('mode') }
+  const handleSwitch = () => { clearLegalHash(); setPage('mode') }
+  const handleHome   = () => { clearLegalHash(); setPage('landing') }
+  const handleLegal  = (p) => {
+    setPage(p)
+    window.location.hash = p
+  }
 
   return (
     <>
       {page === 'landing' && <Landing onStart={handleStart} />}
       {page === 'mode'    && <ModeSelector onSelect={handleSelect} />}
       {page === 'app'     && <Pipeline mode={mode} onBack={handleBack} onSwitchMode={handleSwitch} />}
+      {page === 'privacy' && <Privacy onBack={handleHome} onNavigate={handleLegal} />}
+      {page === 'terms'   && <Terms onBack={handleHome} onNavigate={handleLegal} />}
+      {page === 'contact'  && <Contact onBack={handleHome} />}
     </>
   )
 }
