@@ -64,12 +64,11 @@ npm run preview
 
 ## API Key Security
 
-This app calls the Anthropic API directly from the browser (using the `anthropic-dangerous-direct-browser-calls` header). This is fine for local development and personal use, but **do not deploy this publicly** with your API key exposed in the frontend.
+The frontend calls your own backend endpoint at `/api/v1/messages`.
+Local development uses the Vite dev/proxy middleware; production on Vercel uses the serverless function in `api/v1/messages.js`.
 
-For a production deployment, add a backend proxy:
-- **Next.js**: Add an API route in `/pages/api/generate.js`
-- **Express**: Proxy `/api/generate` to the Anthropic API with your key in the server environment
-- **Vercel Edge Functions**: Same pattern
+Set the server-side environment variable `ANTHROPIC_API_KEY` in Vercel.
+Do not ship the key in the client bundle.
 
 ## Pipelines
 

@@ -80,7 +80,8 @@ function anthropicProxyPlugin(apiKey) {
 }
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '')
+  // Prefixes are used by Vite to decide which env vars to expose. Using [''] includes all vars.
+  const env = loadEnv(mode, process.cwd(), [''])
   const apiKey = env.ANTHROPIC_API_KEY || env.VITE_ANTHROPIC_API_KEY || ''
 
   return {
