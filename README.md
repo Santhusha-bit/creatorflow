@@ -1,12 +1,11 @@
 # Creatorflow
 
-AI-powered content pipeline for creators and entrepreneurs. Generate Instagram and YouTube content simultaneously — for personal brand building or digital product selling.
+AI-powered content pipeline for creators and entrepreneurs. Generate Instagram and YouTube content simultaneously for personal brand building or digital product selling.
 
 ## Tech Stack
 
 - **React 18** + **Vite**
-- **Anthropic Claude API** (streaming)
-- Zero external UI dependencies — all custom CSS
+- **Anthropic Claude API**
 
 ## Project Structure
 
