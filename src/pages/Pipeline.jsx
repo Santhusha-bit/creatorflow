@@ -77,11 +77,11 @@ export default function Pipeline({ mode, onBack, onSwitchMode }) {
     <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
 
       {/* ── Navbar ── */}
-      <nav style={{
+      <nav className="pipeline-nav" style={{
         position: 'sticky', top: 0, zIndex: 100,
         background: 'rgba(248,246,242,.94)', backdropFilter: 'blur(14px)',
         borderBottom: '1px solid rgba(0,0,0,.07)',
-        padding: '0 28px', height: 58,
+        padding: '0 clamp(16px, 4vw, 28px)', height: 58,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         {/* Left */}
@@ -130,16 +130,16 @@ export default function Pipeline({ mode, onBack, onSwitchMode }) {
         </div>
 
         {/* Right */}
-        <div style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink4)' }}>
+        <div className="pipeline-done" style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink4)' }}>
           {doneCount}/{steps.length} complete
         </div>
       </nav>
 
       {/* ── Layout ── */}
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '28px 24px', display: 'flex', gap: 20, alignItems: 'flex-start' }}>
+      <div className="pipeline-layout" style={{ maxWidth: 1200, margin: '0 auto', padding: '28px 24px', display: 'flex', gap: 20, alignItems: 'flex-start' }}>
 
         {/* Sidebar */}
-        <aside style={{ width: 196, flexShrink: 0, position: 'sticky', top: 78 }}>
+        <aside className="pipeline-sidebar" style={{ width: 196, flexShrink: 0, position: 'sticky', top: 78 }}>
           <div className="card" style={{ padding: '12px 8px' }}>
             <div style={{ padding: '2px 12px 10px', fontSize: 10, fontWeight: 800, color: '#BEBEBE', letterSpacing: '.1em', textTransform: 'uppercase' }}>
               Pipeline
@@ -172,7 +172,7 @@ export default function Pipeline({ mode, onBack, onSwitchMode }) {
         </aside>
 
         {/* Main content */}
-        <main style={{ flex: 1, minWidth: 0, animation: 'slideIn .2s ease' }} key={`${mode}-${step}`}>
+        <main className="pipeline-main" style={{ flex: 1, minWidth: 0, animation: 'slideIn .2s ease' }} key={`${mode}-${step}`}>
 
           {/* Step header */}
           <div style={{ marginBottom: 20 }}>
@@ -233,7 +233,7 @@ export default function Pipeline({ mode, onBack, onSwitchMode }) {
             <div className="divider" style={{ marginBottom: 22 }} />
 
             {/* Fields */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 20px', marginBottom: 22 }}>
+            <div className="pipeline-fields-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px 20px', marginBottom: 22 }}>
               {S.fields.map(f => (
                 <div key={f.key} className="field-group">
                   <label>{f.label}</label>
@@ -261,7 +261,7 @@ export default function Pipeline({ mode, onBack, onSwitchMode }) {
 
           {/* Outputs */}
           {(hasOut || isStrm) && (
-            <div style={{ display: 'flex', gap: 16, animation: 'fadeIn .3s ease' }}>
+            <div className="pipeline-outputs" style={{ display: 'flex', gap: 16, flexWrap: 'wrap', animation: 'fadeIn .3s ease' }}>
               {plats.map(pid => (
                 <OutputCard
                   key={pid}

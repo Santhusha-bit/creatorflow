@@ -34,7 +34,7 @@ export default function ModeSelector({ onSelect }) {
         </div>
 
         {/* Mode cards */}
-        <div style={{ display: 'flex', gap: 16 }}>
+        <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
 
           {/* Personal Brand */}
           <button

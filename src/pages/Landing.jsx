@@ -33,7 +33,7 @@ export default function Landing({ onStart, onNavigate }) {
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         background: 'rgba(248,246,242,.9)', backdropFilter: 'blur(18px)',
         borderBottom: '1px solid rgba(0,0,0,.07)',
-        padding: '0 40px', height: 62,
+        padding: '0 clamp(16px, 4vw, 40px)', height: 62,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
@@ -51,7 +51,7 @@ export default function Landing({ onStart, onNavigate }) {
       </nav>
 
       {/* ── Hero ── */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '148px 40px 100px', textAlign: 'center' }}>
+      <section style={{ maxWidth: 1100, margin: '0 auto', padding: 'clamp(110px, 16vw, 148px) clamp(16px, 4vw, 40px) clamp(80px, 10vw, 100px)', textAlign: 'center' }}>
         <div className="au" style={{ animationDelay: '0s', marginBottom: 28 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '6px 16px', borderRadius: 100, background: 'var(--white)', border: '1px solid var(--border)', fontSize: 12.5, fontWeight: 600, color: 'var(--ink2)', boxShadow: 'var(--sh-sm)' }}>
             <StarIcon /> AI content pipeline for creators & entrepreneurs
@@ -162,7 +162,7 @@ export default function Landing({ onStart, onNavigate }) {
             Whether you're a creator growing an audience or an entrepreneur launching a product — Creatorflow has a full 7-step pipeline built exactly for your goal.
           </p>
         </div>
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:20 }}>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(320px, 1fr))', gap:20 }}>
           {[
             { steps: BRAND_STEPS,   icon: PersonIcon, label:'Personal Brand',  sub:'7-step brand building pipeline',  desc:'For creators who want to grow their audience, establish authority, and become known in their niche.', accent:'rgba(124,58,237,.08)', accentBg:'rgba(124,58,237,.1)', accentColor:'#7C3AED' },
             { steps: PRODUCT_STEPS, icon: ShopIcon,   label:'Sell a Product',  sub:'7-step product selling pipeline', desc:'For entrepreneurs who want to launch digital products and build a sales machine on social media.',  accent:'rgba(255,92,53,.07)',  accentBg:'rgba(255,92,53,.1)',  accentColor:'var(--brand-accent)' },
@@ -201,7 +201,7 @@ export default function Landing({ onStart, onNavigate }) {
 
       {/* ── Stats ── */}
       <section style={{ background:'var(--white)', borderTop:'1px solid var(--border)', borderBottom:'1px solid var(--border)', padding:'52px 40px' }}>
-        <div style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:1 }}>
+        <div style={{ maxWidth:1100, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(210px, 1fr))', gap:1 }}>
           {[{n:'14',l:'Total pipeline steps'},{n:'2×',l:'Platform outputs'},{n:'<3min',l:'Per complete step'},{n:'2',l:'Distinct pipelines'}].map(({n,l},i) => (
             <div key={i} style={{ textAlign:'center', padding:'8px 20px', borderRight:i<3?'1px solid var(--border)':'none' }}>
               <div style={{ fontFamily:'var(--serif)', fontSize:52, color:'var(--ink)', lineHeight:1 }}>{n}</div>
@@ -218,7 +218,7 @@ export default function Landing({ onStart, onNavigate }) {
             Built for how creators<br/><span style={{ fontStyle:'italic' }}>actually work.</span>
           </h2>
         </div>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:16 }}>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:16 }}>
           {features.map((f,i) => (
             <div key={i} className="feat-card"
               onMouseEnter={() => setFeatHover(i)}
@@ -241,7 +241,7 @@ export default function Landing({ onStart, onNavigate }) {
               Creators are already<br/><span style={{ fontStyle:'italic', color:'#FFB085' }}>shipping faster.</span>
             </h2>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:16 }}>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:16 }}>
             {testimonials.map((t,i) => (
               <div key={i} style={{ background:'rgba(255,255,255,.06)', border:'1px solid rgba(255,255,255,.1)', borderRadius:20, padding:'26px 28px' }}>
                 <div style={{ display:'flex', gap:2, marginBottom:16 }}>

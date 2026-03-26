@@ -78,7 +78,7 @@ export default function Contact({ onBack }) {
             Send a message and we’ll get back to you. (This uses your email client via a `mailto:` link.)
           </p>
 
-          <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <form onSubmit={handleSubmit} className="contact-form" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
             <div className="field-group" style={{ gridColumn: 'span 1' }}>
               <label>Your name</label>
               <input value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Maya Chen" />
@@ -87,7 +87,7 @@ export default function Contact({ onBack }) {
               <label>Your email</label>
               <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="e.g. maya@email.com" />
             </div>
-            <div className="field-group" style={{ gridColumn: 'span 2' }}>
+            <div className="field-group contact-span2" style={{ gridColumn: 'span 2' }}>
               <label>Message</label>
               <textarea
                 value={message}
@@ -108,7 +108,7 @@ export default function Contact({ onBack }) {
               />
             </div>
 
-            <div style={{ gridColumn: 'span 2', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
+            <div className="contact-span2" style={{ gridColumn: 'span 2', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
               <a
                 href={mailto}
                 className="btn-secondary"

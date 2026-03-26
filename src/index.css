@@ -217,3 +217,48 @@ input::placeholder { color: var(--ink4) !important; }
   height: 5px; border-radius: 3px; border: none;
   cursor: pointer; transition: all .3s cubic-bezier(.4,0,.2,1); padding: 0;
 }
+
+/* ── Mobile responsiveness ── */
+@media (max-width: 760px) {
+  .pipeline-layout {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .pipeline-sidebar {
+    display: none; /* Use the progress pills in the navbar instead */
+  }
+
+  .pipeline-done {
+    display: none;
+  }
+
+  .pipeline-fields-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .pipeline-outputs {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  .pipeline-nav {
+    height: auto !important;
+  }
+
+  .contact-form {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-span2 {
+    grid-column: span 1 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .pipeline-layout {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
